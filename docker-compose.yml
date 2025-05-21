@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8099:8099"
+    environment:
+      - DB_USER=sa
+      - DB_PASSWORD=prime_123$
+      - DB_SERVER=136.185.14.8
+      - DB_DATABASE=OTS_DEMO
+      - DB_ENCRYPT=false
+      - DB_ENABLE_ARITH_ABORT=true
+      - PORT=8099
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-lts
+    environment:
+      SA_PASSWORD:prime_123$
+      ACCEPT_EULA: Y
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+volumes:
+  sql_data:
