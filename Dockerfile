@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 #port expose
-EXPOSE 3001
+EXPOSE 3000
 
 #run the code
 CMD ["npm","start"]
