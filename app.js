@@ -45,7 +45,7 @@ app.use('/api',admin);
 
 //TESTING PURPOSE 
 app.get('/',(req,res,next)=>{
-    res.send("Hello , this is api for kirush laundry serives test1");
+    res.send("Hello , this is api for kirush laundry serives ubuntu test1");
     console.log("ots services");
     
  })
