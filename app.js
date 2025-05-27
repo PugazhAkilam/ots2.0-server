@@ -45,14 +45,9 @@ app.use('/api',admin);
 
 //TESTING PURPOSE 
 app.get('/',(req,res,next)=>{
-<<<<<<< HEAD
-    res.send("Hello , this is api for kirush laundry serives ubuntu test1");
-=======
     res.send("Hello , this is api for kirush laundry serives test for Docker.file");
->>>>>>> 84f4c644e59e5d6d74f85dfe73e456f58e8770c8
     console.log("ots services");
-    
- })
+     })
  http://localhost:3001/api/company/null
  app.get('/api/company/null',(req,res,next)=>{
     res.send("Hello , this is api for ots serives");
