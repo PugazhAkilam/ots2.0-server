@@ -6,22 +6,26 @@ services:
     ports:
       - "8099:8099"
     environment:
-      - DB_USER=sa
-      - DB_PASSWORD=prime_123$
-      - DB_SERVER=136.185.14.8
-      - DB_DATABASE=OTS_DEMO
-      - DB_ENCRYPT=false
-      - DB_ENABLE_ARITH_ABORT=true
-      - PORT=8099
+      DB_USER: sa
+      DB_PASSWORD: prime_123$        # ✅ Replace with your actual SA password
+      DB_SERVER: 136.185.14.8                              # ✅ Hostname of the DB container
+      DB_DATABASE: OTS_DEMO
+      DB_ENCRYPT: "false"
+      DB_ENABLE_ARITH_ABORT: "true"
+      PORT: "8099"
+    restart: unless-stopped
     depends_on:
       - db
+    volumes:
+      - .:/app
+      - ./uploads:/app/uploads/product-images # ✅ Mount host ./uploads to container path
 
   db:
-    image: mcr.microsoft.com/mssql/server:2022-lts
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      SA_PASSWORD:prime_123$
-      ACCEPT_EULA: Y
-      MSSQL_PID: Express
+      SA_PASSWORD: prime_123$         # ✅ Must be 8+ characters, 1 uppercase, 1 number
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
     ports:
       - "1433:1433"
     volumes:
